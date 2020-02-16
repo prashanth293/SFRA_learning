@@ -3,11 +3,11 @@ var path = require('path');
     var sgmfScripts = require('sgmf-scripts');
 
     module.exports = [{
-        mode: 'production',
+        mode: 'development',
         name: 'js',
         entry: sgmfScripts.createJsPath(),
         output: {
-            path: path.resolve('./cartridges/app_storefront_learning/cartridge/static/default/js/'),
+            path: path.resolve('./cartridges/app_storefront_learning/cartridge/static/'),
             filename: '[name].js'
         }
     }, {

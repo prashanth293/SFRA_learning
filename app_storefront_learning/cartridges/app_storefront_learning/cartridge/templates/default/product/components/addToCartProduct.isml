@@ -1,0 +1,31 @@
+<div class="row cart-and-ipay">
+    <div class="col-sm-12">
+	    <isif condition="${product.available}">
+	        <input type="hidden" class="add-to-cart-url" value="${pdict.addToCartUrl}">
+	        <button class="add-to-cart btn btn-primary"
+	                data-toggle="modal" data-target="#chooseBonusProductModal"
+	                data-pid="${product.id}"
+	                ${!product.readyToOrder || !product.available ? "disabled" : ""}>
+	            <i class="fa fa-shopping-bag"></i>
+	            ${Resource.msg('button.addtocart', 'common', null)}
+	        </button>
+        <iselse/>
+        	<button class="btn btn-primary notify-me-btn" data-url="${URLUtils.url('Product-NotifyProductInStock', 'pid', pdict.product.id)}" data-authenticated="${customer.authenticated}">Notify Me</button>
+        	<isif condition="${!customer.authenticated}">
+	        	<form class="oos-notify-me row d-none" action="URLUtils.url('Product-NotifyProductInStock')" data-url="${URLUtils.url('Product-NotifyProductInStock')}">
+	        		<div class="form-group col-12 col-sm-8 mb-0 required">
+	            		<input  name="email" type="text" class="form-control input-field" id="email" placeholder="enter email" pattern="^[\w.%+-]+@[\w.-]+\.[\w]{2,6}$" required/>
+	            		<small class="invalid-feedback text-left"></small>
+	        		</div>
+	        		<input type="hidden" value="${pdict.product.id}" name="pid" />
+	        		<div class="form-group col-12 col-sm-4 mt-2 mt-sm-0">
+	        			<input id="oos_email_btn" class="w-100 form-control btn btn-primary btn-sm oos-guest-email-btn" type="submit" value="send" />
+	        		</div>
+	        	</form>
+        	</isif>
+        	<div class="w-100 text-center text-lg-left mt-2 email-success d-none" style="color: green" >
+        		Thank You, you'll get an email when item is available
+        	</div>
+	    </isif>
+    </div>
+</div>
