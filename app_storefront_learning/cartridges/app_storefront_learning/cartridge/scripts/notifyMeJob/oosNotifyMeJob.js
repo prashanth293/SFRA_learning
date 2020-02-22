@@ -34,7 +34,7 @@ function notifyMeJob() {
             var customer = CustomerMgr.getCustomerByLogin(customerEmail);
             var firstName = '';
             var lastName = '';
-            if (customer !== null) {
+            if (customer && customer.profile) {
             	firstName = customer.profile.firstName;
             	lastName = customer.profile.lastName;
             }

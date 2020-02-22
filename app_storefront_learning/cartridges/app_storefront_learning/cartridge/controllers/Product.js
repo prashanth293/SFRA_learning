@@ -24,10 +24,11 @@ server.post('NotifyProductInStock', function(req, res, next) {
             } else {
                 skusObject = notifyMeCustomObject.custom.skusObject.split('|');
             }
+            if (skusObject.indexOf(pid) > -1) {
+                skusObject.push(pid);
+            }
 
-            skusObject.push(pid);
-            var uniqueSkusObject = skusObject.filter(function(item, i, self) {return self.indexOf(item) === i});
-            notifyMeCustomObject.custom.skusObject = uniqueSkusObject.join('|');
+            notifyMeCustomObject.custom.skusObject = skusObject.join('|');
         });
         res.json({
             success: true

@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = {
-    maxOrderQty: 10,
+    maxOrderQty: 3,
     defaultPageSize: 12
 };

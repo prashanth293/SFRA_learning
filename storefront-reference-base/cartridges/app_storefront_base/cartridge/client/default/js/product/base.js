@@ -482,7 +482,7 @@ function getChildProducts() {
     $('.bundle-item').each(function () {
         childProducts.push({
             pid: $(this).find('.product-id').text(),
-            quantity: parseInt($(this).find('label.quantity').data('quantity'), 10)
+            quantity: parseInt($(this).find('.quantity').data('quantity'), 10)
         });
     });
 
